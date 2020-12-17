@@ -12,23 +12,23 @@ class PlayField extends React.Component {
       isfirstDraw : true
     }
 
-    this.setfirstDraw = this.setfirstDraw.bind(this)
+    this.togglefirstDraw = this.togglefirstDraw.bind(this)
   }
 
   handleKey = event => {
-    document.getElementById("playField").textContent = 'KeyCode of Key Press: ' + event.keyCode;
+    document.getElementById("playField").textContent = 'KeyCode of Key Press: ' + event.code;
   }
   
-  setfirstDraw() {
-    this.setState({
-      isfirstDraw: false
-    })
+  togglefirstDraw() {
+    this.setState(prevState => ({
+      isfirstDraw: !prevState.isfirstDraw
+    }));
   }
 
   render() {
     return (
       <div id="playField" tabIndex="0" onKeyDown={this.handleKey}>
-        <ControlBar setfirstDraw={this.setfirstDraw} isfirstDraw={this.state.isfirstDraw}/>
+        <ControlBar togglefirstDraw={this.togglefirstDraw} isfirstDraw={this.state.isfirstDraw}/>
         <DeckContainer />
         <BetBar />
       </div>

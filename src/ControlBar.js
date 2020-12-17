@@ -5,15 +5,14 @@ class ControlBar extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {isfirstDraw: true};
 
     // This binding is necessary to make `this` work in the callback
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(e) {
-    if (e.target.id === "initDraw") {
-      this.props.setfirstDraw();
+    if (e.target.id === "initDraw" || e.target.id === "finalDraw") {
+      this.props.togglefirstDraw();
     }
   }
 
@@ -29,11 +28,11 @@ class ControlBar extends React.Component {
     {
       return (
         <div id="controlBar" >
-          <button id="hold1" onClick={this.handleClick}>Hold [z]</button>
-          <button id="hold2" onClick={this.handleClick}>Hold [x]</button>
-          <button id="hold3" onClick={this.handleClick}>Hold [c]</button>
-          <button id="hold4" onClick={this.handleClick}>Hold [v]</button>
-          <button id="hold5" onClick={this.handleClick}>Hold [b]</button>
+          <button id="hold1" onClick={this.handleClick}>Hold Card 1 [z]</button>
+          <button id="hold2" onClick={this.handleClick}>Hold Card 2 [x]</button>
+          <button id="hold3" onClick={this.handleClick}>Hold Card 3 [c]</button>
+          <button id="hold4" onClick={this.handleClick}>Hold Card 4 [v]</button>
+          <button id="hold5" onClick={this.handleClick}>Hold Card 5 [b]</button>
           <button id="finalDraw" onClick={this.handleClick}>Final Draw [Space]</button>
         </div>
       );
